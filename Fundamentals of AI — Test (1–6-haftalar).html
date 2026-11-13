@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fundamentals of AI — Test (1–6-haftalar)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf9f5;--card:#fff;--tx:#1f1e1d;--mu:#6b6a68;--bd:#e3e1da;--ac:#c96442;--ok:#2e7d32;--okb:#e5f4e4;--no:#c62828;--nob:#fbebeb;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1e1d;--card:#2a2927;--tx:#f2f0ea;--mu:#a9a7a1;--bd:#403e3a;--ac:#e08a6a;--ok:#7bd88a;--okb:#1f3a24;--no:#ff8a80;--nob:#4a2424;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1f1e1d;--card:#2a2927;--tx:#f2f0ea;--mu:#a9a7a1;--bd:#403e3a;--ac:#e08a6a;--ok:#7bd88a;--okb:#1f3a24;--no:#ff8a80;--nob:#4a2424;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:1.3rem;margin:4px 0}
+.sub{color:var(--mu);font-size:.9rem;margin:0 0 12px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px}
+.tab{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:999px;padding:8px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.tab.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 12px;font-size:.95rem}
+.bar b{color:var(--ac)}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.q h3{font-size:1rem;margin:0 0 10px}
+.o{display:block;width:100%;text-align:left;border:1px solid var(--bd);background:transparent;color:var(--tx);border-radius:10px;padding:10px 12px;margin-top:8px;font:inherit;font-size:.95rem;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o:disabled{cursor:default;opacity:1}
+.o.ok{background:var(--okb);border-color:var(--ok);color:var(--tx)}
+.o.no{background:var(--nob);border-color:var(--no);color:var(--tx)}
+.fb{margin-top:10px;font-size:.9rem;font-weight:600}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}
+.btn{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:8px 12px;font:inherit;font-size:.9rem;cursor:pointer}
+.res{text-align:center;padding:14px;border:1px dashed var(--ac);border-radius:14px;margin:8px 0 16px}
+</style>
+</head>
+<body>
+<main>
+<h1>Fundamentals of AI — Test</h1>
+<p class="sub">1–6-haftalar. Javobni tanlang, natija darhol ko‘rinadi.</p>
+<div class="tabs" id="tabs"></div>
+<div class="bar"><span id="wscore"></span><span>Jami: <b id="tscore"></b></span></div>
+<div id="list"></div>
+<div id="res"></div>
+<p style="text-align:center"><button class="btn" id="reset">Shu haftani qayta boshlash</button></p>
+</main>
+<script>
+var W=[
+{t:"1-hafta",q:[
+["Claude model oilasiga qaysi modellar kiradi?",["GPT, Gemini, Llama","Haiku, Sonnet, Opus","Alpha, Beta, Gamma","Nano, Mini, Max"],1],
+["Artifacts xususiyati nima uchun ishlatiladi?",["Faqat internetdan ma’lumot qidirish uchun","Foydalanuvchi parolini saqlash uchun","Suhbat yonida hujjat, kod yoki mini-ilova kabi mustaqil kontent yaratish va ko‘rsatish uchun","Modelni qayta o‘qitish uchun"],2],
+["Kursning asosiy sertifikatsiya maqsadi qaysi?",["Claude Certified Associate – Foundations (CCAO-F)","Claude Certified Architect – Professional","Google Cloud Associate","Microsoft AI Fundamentals"],0],
+["Projects xususiyatining asosiy vazifasi nima?",["Rasmlarni tahrirlash","Suhbatni avtomatik tarjima qilish","Kompyuter xotirasini tozalash","Doimiy ko‘rsatmalar va bilim manbalari bilan ishlash muhitini sozlash"],3],
+["Bir xil topshiriqni uchta turli AI vositasida bajarib solishtirishdan maqsad nima?",["Eng qimmat vositani aniqlash","Natijalar sifati va vositalar farqini baholashni o‘rganish","Faqat bitta vositani ishlatishni o‘rganish","Akkaunt ochishni mashq qilish"],1]]},
+{t:"2-hafta",q:[
+["Quyidagilardan qaysi biri samarali promptning elementi emas?",["Ko‘rsatma (instruction)","Chiqish formati (output format)","Misollar (examples)","Kompyuterning operatsion tizimi versiyasi"],3],
+["Task decomposition nima?",["Murakkab topshiriqni kichik, ketma-ket qadamlarga bo‘lish","Promptni qisqartirib bitta so‘zga aylantirish","Natijani o‘chirib tashlash","Topshiriqni boshqa odamga berish"],0],
+["“Write about AI” promptini yaxshilashning eng to‘g‘ri yo‘li qaysi?",["Uni bir necha marta takrorlash","Faqat bosh harflar bilan yozish","Auditoriya, kontekst, format va hajmni qo‘shish","Hamma narsani inglizchaga o‘tkazish"],2],
+["Iterative refinement (takroriy takomillashtirish) nimani anglatadi?",["Bitta promptni hech o‘zgartirmasdan ishlatish","Natijani baholab, promptni aniqlashtirib, qayta urinish","Har safar yangi akkaunt ochish","Natijani tekshirmasdan qabul qilish"],1],
+["Prompt ichida misollar (examples) berishdan asosiy maqsad nima?",["Javobni uzaytirish","Modelni sekinlashtirish","Kutilayotgan format va uslubni ko‘rsatish","Xavfsizlik sozlamalarini o‘chirish"],2]]},
+{t:"3-hafta",q:[
+["Hallucination nima?",["Modelning juda tez javob berishi","Modelning ishonchli ko‘rinadigan, lekin noto‘g‘ri yoki to‘qima ma’lumot berishi","Internet aloqasining uzilishi","Foydalanuvchining prompt xatosi"],1],
+["AI keltirgan statistik raqamni tekshirishning eng yaxshi usuli qaysi?",["Raqam chiroyli ko‘rinsa, qabul qilish","Modeldan “ishonchingiz komilmi?” deb so‘rab to‘xtash","Boshqa do‘stdan so‘rash","Ishonchli birlamchi manba bilan solishtirish"],3],
+["Qaysi holatda inson tomonidan tekshiruv (human review) albatta zarur?",["Tibbiy, huquqiy yoki moliyaviy oqibatlarga olib keladigan qarorlarda","Do‘stga tabrik matni yozishda","Shaxsiy eslatma ro‘yxatida","Hech qachon zarur emas"],0],
+["Quyidagilardan qaysi biri hallucination belgisi bo‘lishi mumkin?",["Javobda sarlavha bo‘lishi","Javobning ro‘yxat shaklida berilishi","Mavjud bo‘lmagan maqola yoki muallifga havola keltirilishi","Javob o‘zbek tilida berilishi"],2],
+["AI natijasini auditoriyaga moslab tahrirlashda nimalar hisobga olinadi?",["Faqat shrift turi","Ohang, lug‘at darajasi, to‘liqlik va aniqlik","Faqat so‘zlar soni","Faqat sarlavha rangi"],1]]},
+{t:"4-hafta",q:[
+["Oddiy, tez va arzon bajarilishi kerak bo‘lgan vazifalar uchun qaysi model mos?",["Opus","Sonnet","Haiku","Hech qaysi"],2],
+["Eng murakkab fikrlash talab qiladigan vazifalarda odatda qaysi model tanlanadi?",["Opus","Haiku","Hech qaysi","Hammasi bir xil"],0],
+["Context window nima?",["Brauzerdagi yangi oyna","Foydalanuvchi profili rasmi","Modelning javob berish tezligi","Model suhbatda bir vaqtning o‘zida hisobga ola oladigan matn hajmi"],3],
+["Projects’ni sozlashda odatda nimalar qo‘shiladi?",["Faqat rasmlar","Ko‘rsatmalar (instructions) va bilim manbalari (knowledge sources)","Faqat parol","Faqat video"],1],
+["Google Drive connector nima imkon beradi?",["Ruxsat berilgan Drive fayllaridan Claude’ga ma’lumot olish","Drive’dagi barcha fayllarni ruxsatsiz ochish","Internet tezligini oshirish","Fayllarni avtomatik o‘chirish"],0]]},
+{t:"5-hafta",q:[
+["Agentic workflow oddiy chatdan nimasi bilan farq qiladi?",["Ko‘p bosqichli vazifani topshirish mumkin, AI qadamlarni rejalashtirib bajaradi","U faqat bitta savolga javob beradi","U hech qanday vositadan foydalana olmaydi","U faqat rasm chizadi"],0],
+["Cowork va Research kabi vositalar nima uchun ishlatiladi?",["Faqat tarjima uchun","Faqat parolni tiklash uchun","Faqat o‘yin yaratish uchun","Ko‘p bosqichli vazifalarni AI’ga topshirish uchun"],3],
+["Artifacts yordamida qanday vositalar yaratish mumkin?",["Kod yozmasdan ishlaydigan mini-vositalar va prototiplar","Yangi AI modellari","Kompyuter qismlari","Internet provayderi"],0],
+["Mavjud ish jarayonini AI bilan qayta loyihalashning birinchi qadami qaysi?",["Darhol hamma narsani avtomatlashtirish","Jarayonni butunlay to‘xtatish","Joriy qadamlarni xaritalab, AI qayerda qiymat qo‘shishini aniqlash","Eng qimmat vositani sotib olish"],2],
+["AI qiymati va cheklovlarini manfaatdor tomonlarga qanday yetkazish kerak?",["Faqat afzalliklarini aytib","Faqat kamchiliklarini aytib","Hech narsa demasdan","Ham afzalliklari, ham cheklovlarini halol ko‘rsatib"],3]]},
+{t:"6-hafta",q:[
+["Quyidagilardan qaysi ma’lumotni AI vositasiga yuklash xavfli hisoblanadi?",["Ommaviy maqola matni","O‘zingiz yozgan umumiy esse rejasi","Talabalarning shaxsiy ma’lumotlari va maxfiy hujjatlar","Ochiq darslik mundarijasi"],2],
+["Kursda akademik halollik qoidasiga ko‘ra nima talab qilinadi?",["AI’dan umuman foydalanmaslik","Portfolio yozuvlarida AI’dan foydalanishni hujjatlashtirish","AI ishini ko‘rsatmasdan o‘zinikidek topshirish","Imtihonda AI’dan foydalanish"],1],
+["CCAO-F sertifikatsiya imtihoni parametrlari qaysi javobda to‘g‘ri berilgan?",["40 savol, 70 daqiqa, o‘tish bali 600/1000","30 savol, 60 daqiqa, o‘tish bali 500/1000","100 savol, 180 daqiqa, o‘tish bali 800/1000","60 savol, 120 daqiqa, o‘tish bali 720/1000"],3],
+["Yaxshi natija bermayotgan promptni tuzatishda dastlab nima qilish kerak?",["Muammoni aniqlash (kontekst yetishmasligi, noaniqlik) va keyin promptni qayta yozish","Promptni tasodifiy o‘zgartirish","AI’dan butunlay voz kechish","Natijani tekshirmasdan topshirish"],0],
+["Qaysi holat AI’dan mas’uliyatli foydalanishga misol bo‘ladi?",["AI yozgan matnni o‘qimasdan yuborish","Maxfiy ma’lumotni har qanday vositaga yuklash","AI yaratgan xulosani tekshirib, foydalanganingizni ochiq ko‘rsatish","AI natijasini o‘zingizniki sifatida taqdim etish"],2]]}
+];
+var L="ABCD",cur=0,S=W.map(function(w){return w.q.map(function(){return -1})});
+var $=function(i){return document.getElementById(i)};
+function tabs(){var h="";W.forEach(function(w,i){h+='<button class="tab'+(i==cur?" on":"")+'" data-w="'+i+'">'+w.t+"</button>"});$("tabs").innerHTML=h;
+[].forEach.call($("tabs").children,function(b){b.onclick=function(){cur=+b.dataset.w;draw()}})}
+function sc(w){var c=0,a=0;S[w].forEach(function(v,i){if(v>=0){a++;if(v==W[w].q[i][2])c++}});return [c,a]}
+function draw(){tabs();var w=W[cur],h="";
+w.q.forEach(function(q,i){var v=S[cur][i];h+='<div class="q"><h3>'+(i+1)+". "+q[0]+"</h3>";
+q[1].forEach(function(o,j){var c="o";if(v>=0){if(j==q[2])c+=" ok";else if(j==v)c+=" no"}
+h+='<button class="'+c+'" data-q="'+i+'" data-o="'+j+'"'+(v>=0?" disabled":"")+">"+L[j]+") "+o+"</button>"});
+if(v>=0)h+=v==q[2]?'<div class="fb ok">✓ To‘g‘ri!</div>':'<div class="fb no">✗ Noto‘g‘ri. To‘g‘ri javob: '+L[q[2]]+")</div>";
+h+="</div>"});
+$("list").innerHTML=h;
+[].forEach.call($("list").querySelectorAll(".o"),function(b){b.onclick=function(){S[cur][+b.dataset.q]=+b.dataset.o;draw()}});
+var s=sc(cur),t=0,n=0;W.forEach(function(x,i){t+=sc(i)[0];n+=x.q.length});
+$("wscore").textContent=w.t+": "+s[0]+" / "+w.q.length;$("tscore").textContent=t+" / "+n;
+$("res").innerHTML=s[1]==w.q.length?'<div class="res"><b>'+w.t+" yakunlandi: "+s[0]+" / "+w.q.length+"</b></div>":""}
+$("reset").onclick=function(){S[cur]=S[cur].map(function(){return -1});draw()};
+draw();
+</script>
+</body>
+</html>
